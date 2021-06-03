@@ -6,7 +6,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "ProjectForSlot.Client.dll": "sha256-Dn5L0T+typHFhdHuT6RIseb3M2wtWLp62zmwBmnYprM=",
+      "ProjectForSlot.Client.dll": "sha256-L+yq3YuNewCJa9VETxAPGCDEHMS\/ncBKeCb2Tv9kSvg=",
       "System.Net.Http.Json.dll": "sha256-99dseBOagY3mzu5Y8Eqm8gRI+o8QbbCp7R2Ew9bQ+5E=",
       "System.Buffers.dll": "sha256-ZxXy75PYbzJxNfAc\/SAP1nUYm4gt1jSaOpFnBb9m85M=",
       "mscorlib.dll": "sha256-BaZPMj95+YNe3G4ckTGD6szZFwZeA2MOHn91zTGKDeU=",
@@ -61,7 +61,7 @@
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-czNf3btAeBW\/vvID5LAfgcsNZ+GM3ssVuPaMflcg0rs="
     },
     "pdb": {
-      "ProjectForSlot.Client.pdb": "sha256-yAsAG5IHo8Kq5vjzyUr3CbP8CtfDK+5x6ADQhiDHqh4=",
+      "ProjectForSlot.Client.pdb": "sha256-3rbe9FcXOkV0URRppGgq+MR1MOV92dJ9Bm\/VD9NTqG0=",
       "ProjectForSlot.Shared.pdb": "sha256-WDZvcCStK1QxDBCega0rvV5RDR0UTc2lmHt+dNDEKTU="
     },
     "runtime": {

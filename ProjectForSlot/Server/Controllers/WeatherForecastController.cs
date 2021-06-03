@@ -121,6 +121,14 @@ namespace ProjectForSlot.Server.Controllers
                 DateTime dateTime = DateTime.UtcNow.Date;
                 dateInp = dateTime.ToString("dd/MM/yyyy"); 
             }
+            if(vacc.Contains("x")||vacc.Contains("X"))
+            {
+                vacc = "COVAXIN";
+            }
+            else
+            {
+                vacc = "COVISHIELD";
+            }
             SlotResponse slotResponse = new SlotResponse();
 
             slotResponse.slot = new List<slot>();
