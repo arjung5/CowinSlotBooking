@@ -1,0 +1,215 @@
+@page "/fetchdata"
+@using ProjectForSlot.Shared.Contracts
+@inject HttpClient Http
+
+@if (finalFlag)
+{
+    @if (otpResponse == null)
+    {
+        <h1>Please Enter Phone Number For OTP</h1>
+    }
+    else
+    {
+        <h1>Enter OTP Please</h1>
+    }
+    <p>
+        <input @bind-value="@forecasts" />
+    </p>
+    @if (otpResponse == null)
+    {
+        <button @onclick="GetOtpViaApi">Get Otp</button>
+    }
+    else
+    {
+        <button @onclick="VerifyOtp">Verify Otp</button>
+    }
+    @if (otpResponse == null && !flag)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else if (otpResponse != null)
+    {
+        <div>
+            @otpResponse.txnId
+        </div>
+    }
+    else if (ValidateOtpResponse != null)
+    {
+        <div>
+            @ValidateOtpResponse.token
+        </div>
+    }
+}
+else
+{
+    <p>
+        @*<select @bind-value="@forecasts">
+                @foreach (var template in templates)
+                {
+                    <option value=@template>@template</option>
+                }
+            </select>*@
+
+        <span>
+            Enter State :
+        </span>
+        <span>
+            <input @bind-value="@forecasts" />
+        </span>
+    </p>
+    <p>
+        @*<select>
+                <option>Select Dose</option>
+                <option value=@dose>first</option>
+                <option value=@dose>second</option>
+            </select>*@
+        <span>
+            Enter Dose : first or second
+        </span>
+        <span>
+            <input @bind-value="@dose" />
+        </span>
+    </p>
+    <p>
+        @*<select>
+                <option>Select Vaccine</option>
+                <option value=@vaccine>COVISHIELD</option>
+                <option value=@vaccine>COVAXIN</option>
+            </select>*@
+        <span>
+            Enter Vaccine : COVISHIELD or COVAXIN
+        </span>
+        <span>
+            <input @bind-value="@vaccine" />
+        </span>
+    </p>
+    <p>
+        @*<select>
+                <option>Select Vaccine</option>
+                <option value=@vaccine>COVISHIELD</option>
+                <option value=@vaccine>COVAXIN</option>
+            </select>*@
+        <span>
+            Enter AgeGroup Above 45 Or Below :
+        </span>
+        <span>
+            <input placeholder="above/below" @bind-value="@ageGrp" />
+        </span>
+    </p>
+    <button @onclick="FindCenters">Find Centers</button>
+}
+@if (!flagSlot)
+{
+    <p><em>Loading...</em></p>
+}
+else if (slotResponse != null && slotResponse.Values.Count != 0)
+{
+    <p>
+        Slots Available: @slotResponse["value"].Count;
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Dose</th>
+                <th>Address</th>
+                <th>District Name</th>
+                <th>Fee</th>
+                <th>Min_Age_Limit</th>
+                <th>Name</th>
+                <th>Pincode</th>
+                <th>State Name</th>
+                <th>Vaccine</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var slotss in slotResponse.Values)
+            {
+                foreach (var slots in slotss)
+                {
+                    <tr>
+                        @if (slots.available_capacity_dose1 != 0)
+                        {
+                            <td>@slots.available_capacity_dose1</td>
+                        }
+                        else if (slots.available_capacity_dose2 != 0)
+                        {
+                            <td>@slots.available_capacity_dose2</td>
+                        }
+
+                        <td>@slots.address</td>
+                        <td>@slots.district_name</td>
+                        <td>@slots.fee</td>
+                        <td>@slots.min_age_limit</td>
+                        <td>@slots.name</td>
+                        <td>@slots.pincode</td>
+                        <td>@slots.state_name</td>
+                        <td>@slots.vaccine</td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private string forecasts;
+    private string dose;
+    private string vaccine;
+    private string ageGrp;
+    private bool flagSlot;
+
+    private List<string> templates;
+
+    private bool flag;
+    private bool finalFlag;
+    public OtpResponse otpResponse;
+    public ValidateOtpResponse ValidateOtpResponse;
+
+    public Dictionary<string, List<slot>> slotResponse;
+
+    protected override Task OnInitializedAsync()
+    {
+        flag = true;
+        templates = new List<string>();
+        templates.Add("-Select State-");
+        templates.Add("Delhi");
+        templates.Add("Haryana");
+        templates.Add("Punjab");
+        slotResponse = new Dictionary<string, List<slot>>();
+        flagSlot = true;
+        return base.OnInitializedAsync();
+    }
+
+    public async Task GetOtpViaApi()
+    {
+        flag = false;
+        finalFlag = true;
+        otpResponse = await Http.GetFromJsonAsync<OtpResponse>("WeatherForecast/GetOtp/" + forecasts);
+        if (otpResponse != null)
+        {
+            flag = false;
+            forecasts = "";
+        }
+
+    }
+    public async Task VerifyOtp()
+    {
+        ValidateOtpResponse = await Http.GetFromJsonAsync<ValidateOtpResponse>("WeatherForecast/VerifyOtp/" + forecasts + "/" + otpResponse.txnId);
+        if (ValidateOtpResponse != null)
+        {
+            finalFlag = false;
+        }
+    }
+    public async Task FindCenters()
+    {
+        flagSlot = false;
+        slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/" + forecasts + "/" + dose + "/" + vaccine + "/" + ageGrp);
+        if (slotResponse != null)
+        {
+            flagSlot = true;
+            finalFlag = false;
+        }
+    }
+
+}

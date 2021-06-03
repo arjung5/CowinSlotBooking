@@ -1,0 +1,9 @@
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\bin\Debug\netstandard2.1\ProjectForSlot.Shared.deps.json
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\bin\Debug\netstandard2.1\ProjectForSlot.Shared.dll
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\bin\Debug\netstandard2.1\ProjectForSlot.Shared.pdb
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\obj\Debug\netstandard2.1\ProjectForSlot.Shared.csprojAssemblyReference.cache
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\obj\Debug\netstandard2.1\ProjectForSlot.Shared.AssemblyInfoInputs.cache
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\obj\Debug\netstandard2.1\ProjectForSlot.Shared.AssemblyInfo.cs
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\obj\Debug\netstandard2.1\ProjectForSlot.Shared.csproj.CoreCompileInputs.cache
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\obj\Debug\netstandard2.1\ProjectForSlot.Shared.dll
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Shared\obj\Debug\netstandard2.1\ProjectForSlot.Shared.pdb
