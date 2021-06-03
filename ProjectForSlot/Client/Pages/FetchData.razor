@@ -50,11 +50,24 @@ else
                 }
             </select>*@
 
+        <div>
+            Finding Slots In <em>DELHI</em>
+        </div>
+        @*<span>
+                <input @bind-value="@forecasts" />
+            </span>*@
+    </p>
+    <p>
+        @*<select>
+                <option>Select Dose</option>
+                <option value=@dose>first</option>
+                <option value=@dose>second</option>
+            </select>*@
         <span>
-            Enter State :
+            Enter Date : dd/mm/yyyy(optional)
         </span>
         <span>
-            <input @bind-value="@forecasts" />
+            <input placeholder="@date" @bind-value="@date" />
         </span>
     </p>
     <p>
@@ -67,7 +80,7 @@ else
             Enter Dose : first or second
         </span>
         <span>
-            <input @bind-value="@dose" />
+            <input placeholder="First/Second" @bind-value="@dose" />
         </span>
     </p>
     <p>
@@ -80,7 +93,7 @@ else
             Enter Vaccine : COVISHIELD or COVAXIN
         </span>
         <span>
-            <input @bind-value="@vaccine" />
+            <input placeholder="Covishield/Covaxin" @bind-value="@vaccine" />
         </span>
     </p>
     <p>
@@ -105,7 +118,7 @@ else
 else if (slotResponse != null && slotResponse.Values.Count != 0)
 {
     <p>
-        Slots Available: @slotResponse["value"].Count;
+        Slots Available: @slotResponse["value"].Count
     </p>
     <table class="table">
         <thead>
@@ -158,6 +171,7 @@ else if (slotResponse != null && slotResponse.Values.Count != 0)
     private string vaccine;
     private string ageGrp;
     private bool flagSlot;
+    private string date;
 
     private List<string> templates;
 
@@ -178,6 +192,8 @@ else if (slotResponse != null && slotResponse.Values.Count != 0)
         templates.Add("Punjab");
         slotResponse = new Dictionary<string, List<slot>>();
         flagSlot = true;
+        DateTime dateTime = DateTime.UtcNow.Date;
+        date = dateTime.ToString("dd/MM/yyyy");
         return base.OnInitializedAsync();
     }
 
@@ -203,8 +219,17 @@ else if (slotResponse != null && slotResponse.Values.Count != 0)
     }
     public async Task FindCenters()
     {
+        var dateinp = date;
+        if (string.IsNullOrEmpty(date))
+        {
+            dateinp = "nothing";
+        }
+        else
+        {
+            dateinp = dateinp.Replace('/', '@');
+        }
         flagSlot = false;
-        slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/" + forecasts + "/" + dose + "/" + vaccine + "/" + ageGrp);
+        slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/Delhi" + "/" + dose + "/" + vaccine + "/" + ageGrp + "/" + dateinp);
         if (slotResponse != null)
         {
             flagSlot = true;

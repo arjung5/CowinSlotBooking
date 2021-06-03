@@ -95,14 +95,15 @@ namespace ProjectForSlot.Server.Controllers
         List<string> pincodes = new List<string>();
 
         ///v2/appointment/sessions/public/findByPin?pincode=110001&date=31-03-2021&vaccine=COVISHIELD
-        [HttpGet("FindCenters/{con}/{dose}/{vacc}/{ageGrp}")]
-        public async Task<Dictionary<string, List<slot>>> FindCenters(string con, string dose, string vacc, string ageGrp)
+        [HttpGet("FindCenters/{con}/{dose}/{vacc}/{ageGrp}/{date}")]
+        public async Task<Dictionary<string, List<slot>>> FindCenters(string con, string dose, string vacc, string ageGrp,string date)
         {
-            if (dose == "first")
+            var dateInp = date.Replace('@','/');
+            if (dose.ToLower() == "first")
             {
                 dose = "available_capacity_dose1";
             }
-            else if (dose == "second")
+            else if (dose.ToLower() == "second")
             {
                 dose = "available_capacity_dose2";
             }
@@ -111,9 +112,14 @@ namespace ProjectForSlot.Server.Controllers
                 pincodes.Add(i.ToString());
             }
             var age = 0;
-            if (ageGrp == "above")
+            if (ageGrp.ToLower() == "above")
             {
                 age = 45;
+            }
+            if(dateInp=="nothing")
+            {
+                DateTime dateTime = DateTime.UtcNow.Date;
+                dateInp = dateTime.ToString("dd/MM/yyyy"); 
             }
             SlotResponse slotResponse = new SlotResponse();
 
@@ -125,9 +131,9 @@ namespace ProjectForSlot.Server.Controllers
                 using (HttpClient client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                    DateTime dateTime = DateTime.UtcNow.Date;
-                    var date = dateTime.ToString("dd/MM/yyyy");
-                    var response = await client.GetAsync("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pincode + "&date=" + date + "&vaccine=" + vacc);
+                   
+                   
+                    var response = await client.GetAsync("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pincode + "&date=" + dateInp + "&vaccine=" + vacc);
                     if (response.IsSuccessStatusCode)
                     {
                         var strContent = await response.Content.ReadAsStringAsync();

@@ -91,13 +91,14 @@ using ProjectForSlot.Shared.Contracts;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 155 "E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\Pages\FetchData.razor"
+#line 168 "E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\Pages\FetchData.razor"
        
     private string forecasts;
     private string dose;
     private string vaccine;
     private string ageGrp;
     private bool flagSlot;
+    private string date;
 
     private List<string> templates;
 
@@ -118,6 +119,8 @@ using ProjectForSlot.Shared.Contracts;
         templates.Add("Punjab");
         slotResponse = new Dictionary<string, List<slot>>();
         flagSlot = true;
+        DateTime dateTime = DateTime.UtcNow.Date;
+        date = dateTime.ToString("dd/MM/yyyy");
         return base.OnInitializedAsync();
     }
 
@@ -143,8 +146,17 @@ using ProjectForSlot.Shared.Contracts;
     }
     public async Task FindCenters()
     {
+        var dateinp = date;
+        if (string.IsNullOrEmpty(date))
+        {
+            dateinp = "nothing";
+        }
+        else
+        {
+            dateinp = dateinp.Replace('/', '@');
+        }
         flagSlot = false;
-        slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/" + forecasts + "/" + dose + "/" + vaccine + "/" + ageGrp);
+        slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/Delhi" + "/" + dose + "/" + vaccine + "/" + ageGrp + "/" + dateinp);
         if (slotResponse != null)
         {
             flagSlot = true;
