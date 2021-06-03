@@ -157,7 +157,6 @@ E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\ProjectForSlot.Client.csproj.CoreCompileInputs.cache
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\ProjectForSlot.Client.RazorComponent.input.cache
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\RazorDeclaration\App.razor.g.cs
-E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Counter.razor.g.cs
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\FetchData.razor.g.cs
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Index.razor.g.cs
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
@@ -170,7 +169,6 @@ E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\ProjectForSlot.Client.TagHelpers.output.cache
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\ProjectForSlot.Client.RazorCoreGenerate.cache
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\Razor\App.razor.g.cs
-E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\Razor\Pages\Counter.razor.g.cs
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\Razor\Pages\FetchData.razor.g.cs
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\Razor\Pages\Index.razor.g.cs
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\Razor\Shared\MainLayout.razor.g.cs
@@ -367,6 +365,6 @@ E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\ProjectForSlot.Shared.pdb.br
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\DLQmSu9BDGAPIerS8knRxJCvq4q6lYmF5fYWfKG9FK0=.hash
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\WDZvcCStK1QxDBCega0rvV5RDR0UTc2lmHt_dNDEKTU=.hash
-E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\L_yq3YuNewCJa9VETxAPGCDEHMS-ncBKeCb2Tv9kSvg=.hash
-E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\3rbe9FcXOkV0URRppGgq_MR1MOV92dJ9Bm-VD9NTqG0=.hash
-E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\DaAlg7tPKe6UXEYHnEFKgUHVyAfF2BlszHmetAwSqDc=.hash
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\mk6KC6KA3fKpdURCfAZT2Zehqbt2ahdv274xF7ckzw0=.hash
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\EhlZiwBWKTg2Lt4_sZjRoAeKifUqQ1u8LDxT1gK2bmE=.hash
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\SAqjlCG_I0Me1xjJwPZHfw-pgglS83LdfzzImI63eio=.hash
