@@ -163,7 +163,7 @@ using ProjectForSlot.Shared.Contracts;
         }
         catch (Exception ex)
         {
-            await Js.InvokeVoidAsync("Some error in hitting controller " + ex.Message);
+            //await Js.InvokeVoidAsync("Some error in hitting controller " + ex.Message);
             throw (ex);
         }
         if (slotResponse != null)
@@ -177,7 +177,6 @@ using ProjectForSlot.Shared.Contracts;
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime Js { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
