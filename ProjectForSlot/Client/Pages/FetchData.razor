@@ -1,116 +1,116 @@
 @page "/fetchdata"
 @using ProjectForSlot.Shared.Contracts
 @inject HttpClient Http
+@inject IJSRuntime Js
+@*@if (finalFlag)
+    {
+        @if (otpResponse == null)
+        {
+            <h1>Please Enter Phone Number For OTP</h1>
+        }
+        else
+        {
+            <h1>Enter OTP Please</h1>
+        }
+        <p>
+            <input @bind-value="@forecasts" />
+        </p>
+        @if (otpResponse == null)
+        {
+            <button @onclick="GetOtpViaApi">Get Otp</button>
+        }
+        else
+        {
+            <button @onclick="VerifyOtp">Verify Otp</button>
+        }
+        @if (otpResponse == null && !flag)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else if (otpResponse != null)
+        {
+            <div>
+                @otpResponse.txnId
+            </div>
+        }
+        else if (ValidateOtpResponse != null)
+        {
+            <div>
+                @ValidateOtpResponse.token
+            </div>
+        }
+    }*@
+@*else*@
+@* { *@
+<p>
+    @*<select @bind-value="@forecasts">
+            @foreach (var template in templates)
+            {
+                <option value=@template>@template</option>
+            }
+        </select>*@
 
-@if (finalFlag)
-{
-    @if (otpResponse == null)
-    {
-        <h1>Please Enter Phone Number For OTP</h1>
-    }
-    else
-    {
-        <h1>Enter OTP Please</h1>
-    }
-    <p>
-        <input @bind-value="@forecasts" />
-    </p>
-    @if (otpResponse == null)
-    {
-        <button @onclick="GetOtpViaApi">Get Otp</button>
-    }
-    else
-    {
-        <button @onclick="VerifyOtp">Verify Otp</button>
-    }
-    @if (otpResponse == null && !flag)
-    {
-        <p><em>Loading...</em></p>
-    }
-    else if (otpResponse != null)
-    {
-        <div>
-            @otpResponse.txnId
-        </div>
-    }
-    else if (ValidateOtpResponse != null)
-    {
-        <div>
-            @ValidateOtpResponse.token
-        </div>
-    }
-}
-else
-{
-    <p>
-        @*<select @bind-value="@forecasts">
-                @foreach (var template in templates)
-                {
-                    <option value=@template>@template</option>
-                }
-            </select>*@
-
-        <div>
-            Finding Slots In <em>DELHI</em>
-        </div>
-        @*<span>
-                <input @bind-value="@forecasts" />
-            </span>*@
-    </p>
-    <p>
-        @*<select>
-                <option>Select Dose</option>
-                <option value=@dose>first</option>
-                <option value=@dose>second</option>
-            </select>*@
-        <span>
-            Enter Date : dd/mm/yyyy(optional)
-        </span>
-        <span>
-            <input placeholder="@date" @bind-value="@date" />
-        </span>
-    </p>
-    <p>
-        @*<select>
-                <option>Select Dose</option>
-                <option value=@dose>first</option>
-                <option value=@dose>second</option>
-            </select>*@
-        <span>
-            Enter Dose : first or second
-        </span>
-        <span>
-            <input placeholder="First/Second" @bind-value="@dose" />
-        </span>
-    </p>
-    <p>
-        @*<select>
-                <option>Select Vaccine</option>
-                <option value=@vaccine>COVISHIELD</option>
-                <option value=@vaccine>COVAXIN</option>
-            </select>*@
-        <span>
-            Enter Vaccine : COVISHIELD or COVAXIN
-        </span>
-        <span>
-            <input placeholder="Covishield/Covaxin" @bind-value="@vaccine" />
-        </span>
-    </p>
-    <p>
-        @*<select>
-                <option>Select Vaccine</option>
-                <option value=@vaccine>COVISHIELD</option>
-                <option value=@vaccine>COVAXIN</option>
-            </select>*@
-        <span>
-            Enter AgeGroup Above 45 Or Below :
-        </span>
-        <span>
-            <input placeholder="above/below" @bind-value="@ageGrp" />
-        </span>
-    </p>
-    <button @onclick="FindCenters">Find Centers</button>
-}
+    <div>
+        Finding Slots In <em>DELHI</em>
+    </div>
+    @*<span>
+            <input @bind-value="@forecasts" />
+        </span>*@
+</p>
+<p>
+    @*<select>
+            <option>Select Dose</option>
+            <option value=@dose>first</option>
+            <option value=@dose>second</option>
+        </select>*@
+    <span>
+        Enter Date : dd/mm/yyyy(optional)
+    </span>
+    <span>
+        <input placeholder="@date" @bind-value="@date" />
+    </span>
+</p>
+<p>
+    @*<select>
+            <option>Select Dose</option>
+            <option value=@dose>first</option>
+            <option value=@dose>second</option>
+        </select>*@
+    <span>
+        Enter Dose : first or second
+    </span>
+    <span>
+        <input placeholder="First/Second" @bind-value="@dose" />
+    </span>
+</p>
+<p>
+    @*<select>
+            <option>Select Vaccine</option>
+            <option value=@vaccine>COVISHIELD</option>
+            <option value=@vaccine>COVAXIN</option>
+        </select>*@
+    <span>
+        Enter Vaccine : COVISHIELD or COVAXIN
+    </span>
+    <span>
+        <input placeholder="Covishield/Covaxin" @bind-value="@vaccine" />
+    </span>
+</p>
+<p>
+    @*<select>
+            <option>Select Vaccine</option>
+            <option value=@vaccine>COVISHIELD</option>
+            <option value=@vaccine>COVAXIN</option>
+        </select>*@
+    <span>
+        Enter AgeGroup Above 45 Or Below :
+    </span>
+    <span>
+        <input placeholder="above/below" @bind-value="@ageGrp" />
+    </span>
+</p>
+<button @onclick="FindCenters">Find Centers</button>
+@* } *@
 @if (!flagSlot)
 {
     <p><em>Loading...</em></p>
@@ -209,14 +209,14 @@ else if (slotResponse != null && slotResponse.Values.Count != 0)
         }
 
     }
-    public async Task VerifyOtp()
-    {
-        ValidateOtpResponse = await Http.GetFromJsonAsync<ValidateOtpResponse>("WeatherForecast/VerifyOtp/" + forecasts + "/" + otpResponse.txnId);
-        if (ValidateOtpResponse != null)
-        {
-            finalFlag = false;
-        }
-    }
+    //public async Task VerifyOtp()
+    //{
+    //    ValidateOtpResponse = await Http.GetFromJsonAsync<ValidateOtpResponse>("WeatherForecast/VerifyOtp/" + forecasts + "/" + otpResponse.txnId);
+    //    if (ValidateOtpResponse != null)
+    //    {
+    //        finalFlag = false;
+    //    }
+    //}
     public async Task FindCenters()
     {
         var dateinp = date;
@@ -229,7 +229,16 @@ else if (slotResponse != null && slotResponse.Values.Count != 0)
             dateinp = dateinp.Replace('/', '@');
         }
         flagSlot = false;
-        slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/Delhi" + "/" + dose + "/" + vaccine + "/" + ageGrp + "/" + dateinp);
+        try
+        {
+            slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/Delhi" + "/" + dose + "/" + vaccine + "/" + ageGrp + "/" + dateinp);
+
+        }
+        catch (Exception ex)
+        {
+            await Js.InvokeVoidAsync("Some error in hitting controller " + ex.Message);
+            throw (ex);
+        }
         if (slotResponse != null)
         {
             flagSlot = true;

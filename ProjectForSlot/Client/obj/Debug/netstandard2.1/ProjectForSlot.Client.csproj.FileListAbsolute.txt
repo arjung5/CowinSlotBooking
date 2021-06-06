@@ -365,6 +365,6 @@ E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\ProjectForSlot.Shared.pdb.br
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\DLQmSu9BDGAPIerS8knRxJCvq4q6lYmF5fYWfKG9FK0=.hash
 E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\WDZvcCStK1QxDBCega0rvV5RDR0UTc2lmHt_dNDEKTU=.hash
-E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\mk6KC6KA3fKpdURCfAZT2Zehqbt2ahdv274xF7ckzw0=.hash
-E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\EhlZiwBWKTg2Lt4_sZjRoAeKifUqQ1u8LDxT1gK2bmE=.hash
-E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\SAqjlCG_I0Me1xjJwPZHfw-pgglS83LdfzzImI63eio=.hash
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\YofD6_VXil4ZwOTp7NZtxVxRLlZbwDHh0jw-bfuzAjk=.hash
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\ZjRJRHDrBSDgx-08Ng5VPDrx7r-eih8M2IZBTI0Nt8A=.hash
+E:\FolderForPractise\ProjectForSlot\ProjectForSlot\Client\obj\Debug\netstandard2.1\integrity\ty-vHRn-IZbKJAlcL9SkrvtxZ-vcCugat3RKQTuosgk=.hash

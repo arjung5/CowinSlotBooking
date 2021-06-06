@@ -219,8 +219,9 @@ namespace ProjectForSlot.Server.Controllers
                     }
                     catch(Exception ex)
                     {
-
+                        Console.WriteLine("Error in api Boss");
                         throw (ex);
+
                     }
 
 

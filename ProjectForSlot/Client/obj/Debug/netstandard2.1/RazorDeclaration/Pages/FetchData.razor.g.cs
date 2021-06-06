@@ -136,14 +136,14 @@ using ProjectForSlot.Shared.Contracts;
         }
 
     }
-    public async Task VerifyOtp()
-    {
-        ValidateOtpResponse = await Http.GetFromJsonAsync<ValidateOtpResponse>("WeatherForecast/VerifyOtp/" + forecasts + "/" + otpResponse.txnId);
-        if (ValidateOtpResponse != null)
-        {
-            finalFlag = false;
-        }
-    }
+    //public async Task VerifyOtp()
+    //{
+    //    ValidateOtpResponse = await Http.GetFromJsonAsync<ValidateOtpResponse>("WeatherForecast/VerifyOtp/" + forecasts + "/" + otpResponse.txnId);
+    //    if (ValidateOtpResponse != null)
+    //    {
+    //        finalFlag = false;
+    //    }
+    //}
     public async Task FindCenters()
     {
         var dateinp = date;
@@ -156,7 +156,16 @@ using ProjectForSlot.Shared.Contracts;
             dateinp = dateinp.Replace('/', '@');
         }
         flagSlot = false;
-        slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/Delhi" + "/" + dose + "/" + vaccine + "/" + ageGrp + "/" + dateinp);
+        try
+        {
+            slotResponse = await Http.GetFromJsonAsync<Dictionary<string, List<slot>>>("WeatherForecast/FindCenters/Delhi" + "/" + dose + "/" + vaccine + "/" + ageGrp + "/" + dateinp);
+
+        }
+        catch (Exception ex)
+        {
+            await Js.InvokeVoidAsync("Some error in hitting controller " + ex.Message);
+            throw (ex);
+        }
         if (slotResponse != null)
         {
             flagSlot = true;
@@ -168,6 +177,7 @@ using ProjectForSlot.Shared.Contracts;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime Js { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
