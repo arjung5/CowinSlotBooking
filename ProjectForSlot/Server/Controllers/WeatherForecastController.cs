@@ -139,24 +139,39 @@ namespace ProjectForSlot.Server.Controllers
                 using (HttpClient client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                   
-                   
-                    var response = await client.GetAsync("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pincode + "&date=" + dateInp + "&vaccine=" + vacc);
-                    if (response.IsSuccessStatusCode)
+
+                    try
                     {
-                        var strContent = await response.Content.ReadAsStringAsync();
-                        var responseFromSlot = JsonConvert.DeserializeObject<Root>(strContent);
-                        foreach (var value in responseFromSlot.sessions)
+                        var response = await client.GetAsync("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pincode + "&date=" + dateInp + "&vaccine=" + vacc);
+                        if (response.IsSuccessStatusCode)
                         {
-                            slot slot = new slot();
-                            if (age >= 45)
+                            var strContent = await response.Content.ReadAsStringAsync();
+                            var responseFromSlot = JsonConvert.DeserializeObject<Root>(strContent);
+                            foreach (var value in responseFromSlot.sessions)
                             {
-                                if (dose == "available_capacity_dose1")
+                                slot slot = new slot();
+                                if (age >= 45)
                                 {
-                                    if (value.available_capacity_dose1 > 0 && vacc == value.vaccine && value.min_age_limit == 45)
+                                    if (dose == "available_capacity_dose1")
+                                    {
+                                        if (value.available_capacity_dose1 > 0 && vacc == value.vaccine && value.min_age_limit == 45)
+                                        {
+                                            slot.address = value.address;
+                                            slot.available_capacity_dose1 = value.available_capacity_dose1;
+                                            slot.district_name = value.district_name;
+                                            slot.fee = value.fee;
+                                            slot.pincode = value.pincode;
+                                            slot.name = value.name;
+                                            slot.vaccine = value.vaccine;
+                                            slot.min_age_limit = value.min_age_limit;
+                                            slot.state_name = value.state_name;
+                                            slotResponse.slot.Add(slot);
+                                        }
+                                    }
+                                    else if (value.available_capacity_dose2 > 0 && vacc == value.vaccine && value.min_age_limit == 45)
                                     {
                                         slot.address = value.address;
-                                        slot.available_capacity_dose1 = value.available_capacity_dose1;
+                                        slot.available_capacity_dose1 = value.available_capacity_dose2;
                                         slot.district_name = value.district_name;
                                         slot.fee = value.fee;
                                         slot.pincode = value.pincode;
@@ -167,54 +182,47 @@ namespace ProjectForSlot.Server.Controllers
                                         slotResponse.slot.Add(slot);
                                     }
                                 }
-                                else if (value.available_capacity_dose2 > 0 && vacc == value.vaccine && value.min_age_limit == 45)
+                                else
                                 {
-                                    slot.address = value.address;
-                                    slot.available_capacity_dose1 = value.available_capacity_dose2;
-                                    slot.district_name = value.district_name;
-                                    slot.fee = value.fee;
-                                    slot.pincode = value.pincode;
-                                    slot.name = value.name;
-                                    slot.vaccine = value.vaccine;
-                                    slot.min_age_limit = value.min_age_limit;
-                                    slot.state_name = value.state_name;
-                                    slotResponse.slot.Add(slot);
-                                }
-                            }
-                            else
-                            {
-                                if (dose == "available_capacity_dose1")
-                                {
-                                    if (value.available_capacity_dose1 > 0 && vacc == value.vaccine && value.min_age_limit == 18)
+                                    if (dose == "available_capacity_dose1")
+                                    {
+                                        if (value.available_capacity_dose1 > 0 && vacc == value.vaccine && value.min_age_limit == 18)
+                                        {
+                                            slot.address = value.address;
+                                            slot.available_capacity_dose1 = value.available_capacity_dose1;
+                                            slot.district_name = value.district_name;
+                                            slot.fee = value.fee;
+                                            slot.pincode = value.pincode;
+                                            slot.name = value.name;
+                                            slot.vaccine = value.vaccine;
+                                            slot.min_age_limit = value.min_age_limit;
+                                            slot.state_name = value.state_name;
+                                            slotResponse.slot.Add(slot);
+                                        }
+                                    }
+                                    else if (value.available_capacity_dose2 > 0 && vacc == value.vaccine && value.min_age_limit == 18)
                                     {
                                         slot.address = value.address;
-                                        slot.available_capacity_dose1 = value.available_capacity_dose1;
+                                        slot.available_capacity_dose1 = value.available_capacity_dose2;
                                         slot.district_name = value.district_name;
                                         slot.fee = value.fee;
                                         slot.pincode = value.pincode;
                                         slot.name = value.name;
-                                        slot.vaccine = value.vaccine;
                                         slot.min_age_limit = value.min_age_limit;
                                         slot.state_name = value.state_name;
+                                        slot.vaccine = value.vaccine;
                                         slotResponse.slot.Add(slot);
                                     }
-                                }
-                                else if (value.available_capacity_dose2 > 0 && vacc == value.vaccine && value.min_age_limit == 18)
-                                {
-                                    slot.address = value.address;
-                                    slot.available_capacity_dose1 = value.available_capacity_dose2;
-                                    slot.district_name = value.district_name;
-                                    slot.fee = value.fee;
-                                    slot.pincode = value.pincode;
-                                    slot.name = value.name;
-                                    slot.min_age_limit = value.min_age_limit;
-                                    slot.state_name = value.state_name;
-                                    slot.vaccine = value.vaccine;
-                                    slotResponse.slot.Add(slot);
                                 }
                             }
                         }
                     }
+                    catch(Exception ex)
+                    {
+
+                        throw (ex);
+                    }
+
 
                 }
             }
