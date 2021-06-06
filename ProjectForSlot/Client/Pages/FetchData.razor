@@ -1,7 +1,7 @@
 @page "/fetchdata"
 @using ProjectForSlot.Shared.Contracts
 @inject HttpClient Http
-@inject IJSRuntime Js
+@*@inject IJSRuntime Js*@
 @*@if (finalFlag)
     {
         @if (otpResponse == null)
@@ -236,7 +236,7 @@ else if (slotResponse != null && slotResponse.Values.Count != 0)
         }
         catch (Exception ex)
         {
-            await Js.InvokeVoidAsync("Some error in hitting controller " + ex.Message);
+            //await Js.InvokeVoidAsync("Some error in hitting controller " + ex.Message);
             throw (ex);
         }
         if (slotResponse != null)
